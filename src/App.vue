@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import HelloWorld from './components/nav'
+import HelloWorld from './components/layout/nav'
 
 export default {
   name: 'App',

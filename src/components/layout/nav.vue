@@ -33,11 +33,13 @@ export default {
 </script> 
 
 <style>
-.nav {width: 130px; height: 100vh; border-right: 1px solid #ddd ; text-align: center;}
+.nav {width: 130px; height: 100vh; border-right: 1px solid #ddd ; text-align: center; background: rgb(255, 255, 255);}
 .nav h3 {padding-top: 20px;}
 .nav h3 img {width: 50px; height: 50px;}
 .nav ul {text-align: left; padding-top: 20px; padding-left: 20px;}
 .nav ul li {height: 50px; line-height: 50px;}
-.nav ul li span {font-size: 14px; color: #000; display: inline-block; vertical-align: middle; padding-left: 5px;}
+.nav ul li:hover span {color: #bbb;}
+.nav ul li span {font-size: 14px; color: #999; display: inline-block; vertical-align: middle; padding-left: 5px;}
 .h-5 {width: 25px; height: 20px; display: inline-block; vertical-align: middle;}
+
 </style> 
