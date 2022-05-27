@@ -1,6 +1,6 @@
 <template>
 	<div class="wrap">
-		<Navigation msg="Welcome to Your Vue.js App"/>
+		<Navigation/>
 		<SettingMenu/>
 		<VideoContent/>
 	</div>

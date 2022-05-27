@@ -3,14 +3,36 @@ import { createStore } from 'vuex'
 const store = createStore({
   state(){
     return {
-        MenuState : "",
+        MenuState : 1,
+        fileSrc : "",
+
     }
   },
   mutations : {
     MenuStateChange(state , ms){
-        state.MenuState = ms
-        console.log(ms)
-      },
+      state.MenuState = ms
+      console.log(ms)
+    },
+    fileSrcChange(state){
+      console.log(state)
+    },
+    onFileChange2(state){
+
+      const files = state.target.files
+			console.log(files)
+			files[0].type != "video/mp4" ? alert("확장자명을 확인해 주세요.") : this.fileName = files[0].name;
+
+			let reader = new FileReader();
+			reader.readAsDataURL(files[0]);
+			reader.addEventListener('load' , function(){
+				console.log(reader.result);
+			});
+    }
+  },
+  actions:{
+    onFileChange2 : function(context){
+      return alert(`${context}`)
+    } 
   }
 });
 

@@ -2,19 +2,19 @@
 	<div class="nav">
 		<h3><img src="@/assets/images/logo.png"></h3>
 		<ul>
-			<li @click="$store.commit('MenuStateChange' , 1)">
+			<li @click="this.$store.commit('MenuStateChange' , 1)">
 				<a href="javascript:;">
 					<CogIcon class="h-5 w-5 text-blue-500"/>
 					<span>Setting</span>
 				</a>
 			</li>
-			<li>
+			<li  @click="$store.commit('MenuStateChange' ,2)">
 				<a href="javascript:;">
 					<DocumentAddIcon class="h-5 w-5 text-blue-500"/>
 					<span>Media</span>
 				</a>
 			</li>
-			<li>
+			<li @click="$store.commit('MenuStateChange' ,3)">
 				<a href="javascript:;">
 					<ChatAltIcon class="h-5 w-5 text-blue-500"/>
 					<span>Text</span>
