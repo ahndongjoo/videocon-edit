@@ -10,7 +10,7 @@
 						</p>
 					<p>파일을 업로드해 주세요.<br><em><b>클릭</b> 또는 <b>드래그</b>하여 업로드 해 주세요.</em><br><em class="file_name">FileName : {{fileName}}</em></p>
 					</label>
-					<input id="file_input" type="file" accept=".mp4" @change="$store.commit('onFileChange2')">
+					<input id="file_input" type="file" accept=".mp4" @change="onFileChange">
 				</div>
 				<div class="box_middle"></div>
 				<div class="box_bottom"></div>
@@ -46,14 +46,16 @@ export default {
 	methods: {
 		onFileChange(e){
 			const files = e.target.files
-			console.log(files)
+			// console.log(files)
 			files[0].type != "video/mp4" ? alert("확장자명을 확인해 주세요.") : this.fileName = files[0].name;
 
 			let reader = new FileReader();
 			reader.readAsDataURL(files[0]);
 			reader.addEventListener('load' , function(){
-				console.log(reader.result);
+				// console.log(reader.result);
 			});
+			var videoSrc = URL.createObjectURL(files[0])
+			this.$store.commit("fileSrcChange" , videoSrc);
 		}
 	}
 }
