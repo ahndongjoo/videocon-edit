@@ -5,7 +5,6 @@ const store = createStore({
     return {
       MenuState : 1,
       fileSrc : "",
-
     }
   },
   mutations : {

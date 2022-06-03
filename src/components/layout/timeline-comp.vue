@@ -36,5 +36,4 @@ export default {
 .timeline_box ul {}
 .timeline_box ul li {float: left; width: 300px; height: 200px; background-color: #feee; border-left: 1px solid #eee;}
 .timeline_box ul li img {}
-
 </style>
