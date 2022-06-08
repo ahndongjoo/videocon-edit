@@ -1,12 +1,21 @@
 import { createApp } from 'vue'
+import axios from 'axios'
 import App from './App.vue'
-import FFmpegService from "./ffmpeg.js";
 // import router from './router.js'
 import store from './store.js'
 
-
 let app = createApp(App);
-app.use(store , FFmpegService).mount('#app');
+
+app.use( store , axios ).mount('#app');
+
+// axios 예제
+// axios.get(`https://api.videocon.io/api/v1/contest/end?keyword=${""}&purpose=${""}&industry=${""}&sort=${1}&page=${1}`)
+// 	.then(function(data) {
+// 	console.log(data);
+// });
+// .catch(function(error) {
+//     console.log(error);
+//     });
 
 
 // 프레임 쪼개기;
@@ -46,6 +55,5 @@ app.use(store , FFmpegService).mount('#app');
 
 //     infoContainer.innerHTML = `耗时：${Date.now() - startTime}ms<br>宽度：${width}<br>高度：${height}<br>时长：${duration / 1000000}s`;
 // })
-
 
 // ffmpeg -i 1080.mp4 -an -r 1 -y -s 320x240 output%d.jpg

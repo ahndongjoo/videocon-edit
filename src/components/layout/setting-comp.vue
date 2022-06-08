@@ -1,7 +1,7 @@
 <template>
 	<div class="setting_menu">
 		<div class="menu_container menu_container1" v-if="MenuStateVal == 1">
-			<h3>Menu-container1</h3>
+			<h3>{{ message }}</h3>
 			<div class="menu_box">
 				<div class="box_top">
 					<label for="file_input">
@@ -27,8 +27,17 @@
 
 <script>
 // import { CloudUpload } from '@heroicons/vue/solid'
+// import axios from 'axios'
+import { createFFmpeg ,  fetchFile } from '@ffmpeg/ffmpeg'
 
 export default {
+	setup(){		
+		const ffmpeg = createFFmpeg({
+			corePath: 'https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js',
+			log : true,
+		})
+		return {ffmpeg};
+	},
 	components :{
 		
 	},
@@ -40,14 +49,20 @@ export default {
 	data(){
 		return{
 			MenuStateVal : this.$store.state.MenuState,
-			fileName : ""
+			fileName : "",
+			message : "파일 업로드"
 		} 
 	},
 	methods: {
-		onFileChange(e){
+		async onFileChange(e){			
+
+			this.message = "업로드 중입니다"
+			await this.ffmpeg.load();
+
 			const files = e.target.files
-			// console.log(files)
 			files[0].type != "video/mp4" ? alert("확장자명을 확인해 주세요.") : this.fileName = files[0].name;
+			const ffmpegFile = this.ffmpeg.FS(`${files}` , `${files[0].name}`);
+			console.log(ffmpegFile)
 
 			let reader = new FileReader();
 			reader.readAsDataURL(files[0]);
@@ -68,7 +83,7 @@ export default {
 .setting_menu {width: 350px; box-sizing: border-box; padding: 40px 30px 0 30px; border-right: 1px solid #eed;}
 .setting_menu h3 {font-weight: bold; font-size: 18px;}
 .menu_container1 {}
-.menu_container1 .menu_box {margin-top: 30px}
+.menu_container1 .menu_box {margin-top: 20px}
 .menu_container1 .menu_box .box_top {width: 100%; box-sizing: border-box; border: 1px dashed #ddd; border-radius: 15px; padding: 45px 20px; text-align: center;}
 .menu_container1 .menu_box .box_top:hover {background-color:  #d5eef8; border-color:#6dcef5;}
 .menu_container1 .menu_box .box_top .img_icon {width: 35px; display: inline-block;}

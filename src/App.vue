@@ -3,6 +3,7 @@
 		<Navigation/>
 		<SettingMenu/>
 		<VideoContent/>
+		<!-- <ExampleComp/> -->
 	</div>
 </template>
 
@@ -10,6 +11,7 @@
 import Navigation from './components/layout/nav-comp'
 import SettingMenu from './components/layout/setting-comp'
 import VideoContent from './components/video-comp'
+// import ExampleComp from './components/layout/example-comp.vue'
 
 export default {
 	name: 'App',
@@ -17,6 +19,7 @@ export default {
 		Navigation :Navigation ,
 		SettingMenu :SettingMenu ,
 		VideoContent : VideoContent,
+		// ExampleComp : ExampleComp,
 	}
 }
 </script>
