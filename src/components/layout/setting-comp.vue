@@ -28,15 +28,15 @@
 <script>
 // import { CloudUpload } from '@heroicons/vue/solid'
 // import axios from 'axios'
-import { createFFmpeg ,  fetchFile } from '@ffmpeg/ffmpeg'
+import { createFFmpeg , fetchFile } from '@ffmpeg/ffmpeg' // eslint-disable-line no-unused-vars
 
 export default {
-	setup(){		
+	setup(){
 		const ffmpeg = createFFmpeg({
-			corePath: 'https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js',
 			log : true,
-		})
+		});
 		return {ffmpeg};
+		
 	},
 	components :{
 		
@@ -58,16 +58,15 @@ export default {
 
 			this.message = "업로드 중입니다"
 			await this.ffmpeg.load();
-
+			alert("dss");
 			const files = e.target.files
 			files[0].type != "video/mp4" ? alert("확장자명을 확인해 주세요.") : this.fileName = files[0].name;
-			const ffmpegFile = this.ffmpeg.FS(`${files}` , `${files[0].name}`);
+			const ffmpegFile = this.ffmpeg.FS(`${files}` , `${files[0].name}`); // eslint-disable-line no-unused-vars
 			console.log(ffmpegFile)
-
 			let reader = new FileReader();
 			reader.readAsDataURL(files[0]);
 			reader.addEventListener('load' , function(){
-				// console.log(reader.result);
+
 			});
 			var videoSrc = URL.createObjectURL(files[0])
 			this.$store.commit("fileSrcChange" , videoSrc);

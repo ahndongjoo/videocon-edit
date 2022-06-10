@@ -10,11 +10,11 @@ const store = createStore({
   mutations : {
     MenuStateChange(state , ms){
       state.MenuState = ms
-    
+      console.log(ms)
     },
     fileSrcChange(state , fs){
       state.fileSrc = fs
-      
+      console.log(fs)
     },
   },
   actions:{
